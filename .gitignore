@@ -1,0 +1,26 @@
+# Firefox extension packaging
+*.xpi
+*.zip
+web-ext-artifacts/
+
+# Development
+.web-ext-config.js
+node_modules/
+package-lock.json
+
+# System files
+.DS_Store
+Thumbs.db
+*.log
+
+# Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+tmp/
+temp/
+*.tmp

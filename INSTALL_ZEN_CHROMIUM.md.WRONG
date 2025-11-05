@@ -1,0 +1,211 @@
+# 🌐 Installation Guide for Zen Browser & Chromium-based Browsers
+
+This extension now supports both Firefox and Chromium-based browsers (including **Zen Browser**, Chrome, Edge, Brave, etc.)
+
+## 🎯 For Zen Browser
+
+Zen Browser is based on Chromium, so follow these steps:
+
+### Step 1: Enable Developer Mode
+
+1. Open Zen Browser
+2. Navigate to: `zen://extensions/` (or click Menu → Extensions)
+3. Toggle **Developer mode** ON (usually in the top-right corner)
+
+### Step 2: Load the Extension
+
+1. Click **Load unpacked** button
+2. Navigate to the `mindful-navigation` folder
+3. Select the folder (the one containing `manifest.json`)
+4. Click **Select Folder** / **Open**
+
+### Step 3: Verify Installation
+
+You should see:
+- ✅ Extension card appears with name "Mindful Navigation"
+- ✅ Extension icon (🧘) in your toolbar
+- ✅ No error messages
+
+### Step 4: Pin the Extension (Optional)
+
+1. Click the puzzle piece icon (Extensions) in toolbar
+2. Find "Mindful Navigation"
+3. Click the pin icon to keep it visible
+
+## 🦊 For Firefox
+
+### Step 1: Load Temporary Extension
+
+1. Open Firefox
+2. Navigate to: `about:debugging#/runtime/this-firefox`
+3. Click **Load Temporary Add-on**
+4. Navigate to the `mindful-navigation` folder
+5. Select `manifest.json` file
+6. Click **Open**
+
+**Note:** In Firefox, temporary extensions are removed when you close the browser. For permanent installation, you'll need to package and sign the extension.
+
+## 🌍 For Other Chromium Browsers
+
+The same steps as Zen Browser work for:
+- **Chrome**: `chrome://extensions/`
+- **Edge**: `edge://extensions/`
+- **Brave**: `brave://extensions/`
+- **Opera**: `opera://extensions/`
+- **Vivaldi**: `vivaldi://extensions/`
+
+## 🔧 Browser Compatibility
+
+The extension uses a **browser API polyfill** that automatically detects and adapts to:
+
+| Browser | API Used | Supported |
+|---------|----------|-----------|
+| Firefox | `browser` | ✅ Yes |
+| Zen Browser | `chrome` | ✅ Yes |
+| Chrome | `chrome` | ✅ Yes |
+| Edge | `chrome` | ✅ Yes |
+| Brave | `chrome` | ✅ Yes |
+| Safari | - | ❌ Not yet |
+
+## 🧪 Testing the Installation
+
+### Quick Test
+
+1. Click the extension icon
+2. You should see the popup with:
+   - Blocked Domains count
+   - Active Sessions count
+   - Settings button
+
+### Full Test
+
+1. Open `test.html` from the extension folder
+2. Run all 5 tests
+3. All tests should pass ✅
+
+### Manual Test
+
+1. Open Settings (click icon → Open Settings)
+2. Add `example.com` to blocked domains
+3. Visit `http://example.com`
+4. The zen overlay should appear with 30-second timer
+
+## 🐛 Troubleshooting
+
+### Extension Won't Load
+
+**Chrome/Zen Browser:**
+- Check Developer mode is enabled
+- Look for error messages in the extension card
+- Verify `manifest.json` is in the selected folder
+
+**Firefox:**
+- Check browser console (F12) for errors
+- Verify you selected the `manifest.json` file
+- Try reloading: `about:debugging` → Reload
+
+### Extension Loads but Doesn't Work
+
+1. **Check Console:**
+   - Right-click extension icon → Inspect popup
+   - Look for errors in Console tab
+
+2. **Reload Extension:**
+   - Go to extensions page
+   - Click Reload/Refresh icon
+   - Try again
+
+3. **Clear Storage:**
+   - Browser console: F12
+   - Run: `chrome.storage.local.clear()` or `browser.storage.local.clear()`
+   - Reload extension
+
+### API Detection Issues
+
+If test.html shows "API not available":
+
+1. Make sure extension is installed
+2. Open test.html as a **local file** (`file://...`)
+3. Don't open from a web server (`http://...`)
+4. Check browser console for specific errors
+
+## 📝 API Differences
+
+The extension handles differences between Firefox and Chromium automatically:
+
+**Firefox (`browser` API):**
+- Promise-based (async/await works natively)
+- `browser.runtime.sendMessage()` returns a Promise
+
+**Chromium (`chrome` API):**
+- Callback-based (polyfill converts to Promises)
+- `chrome.runtime.sendMessage()` uses callbacks
+
+Our polyfill (`browser-polyfill.js`) bridges these differences transparently.
+
+## 🔄 Updating the Extension
+
+### Chromium Browsers
+
+1. Go to extensions page
+2. Click **Reload** icon on the extension card
+3. Changes take effect immediately
+
+### Firefox
+
+1. Go to `about:debugging`
+2. Click **Reload** next to the extension
+3. Changes take effect immediately
+
+## ⚠️ Known Limitations
+
+### Firefox Temporary Extensions
+- Removed when browser closes
+- Must reload each session
+- For permanent: package and submit to AMO (addons.mozilla.org)
+
+### Chromium Developer Extensions
+- Warning badge on extension icon
+- Can be dismissed or ignored
+- For production: publish to Chrome Web Store
+
+## 🎯 Next Steps
+
+After successful installation:
+
+1. ✅ Configure your blocked domains
+2. ✅ Test with `example.com`
+3. ✅ Add your actual distracting sites
+4. ✅ Experience mindful browsing!
+
+## 💡 Tips
+
+**For Daily Use (Chromium):**
+- Extension persists between sessions
+- No need to reload unless updating
+- Pin to toolbar for quick access
+
+**For Daily Use (Firefox):**
+- Consider packaging for permanent install
+- Or accept reloading each session
+- Use Firefox Developer Edition for easier testing
+
+## 🆘 Still Having Issues?
+
+1. Check `TROUBLESHOOTING.md` for detailed debugging
+2. Run all tests in `test.html`
+3. Check browser console for specific errors
+4. Open an issue on GitHub with:
+   - Browser name and version
+   - Console error messages
+   - Steps to reproduce
+
+---
+
+**Browser Compatibility Summary:**
+- ✅ Zen Browser (Chromium) - Fully supported
+- ✅ Firefox - Fully supported
+- ✅ Chrome/Edge/Brave - Fully supported
+- ❌ Safari - Not yet supported
+
+**Happy Mindful Browsing! 🧘**

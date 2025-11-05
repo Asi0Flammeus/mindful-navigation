@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mindful Navigation</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <div class="header">
+      <span class="icon">🧘</span>
+      <h1>Mindful Navigation</h1>
+    </div>
+
+    <div class="stats-section">
+      <div class="stat-card">
+        <div class="stat-number" id="blocked-count">0</div>
+        <div class="stat-label">Blocked Domains</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="active-sessions">0</div>
+        <div class="stat-label">Active Sessions</div>
+      </div>
+    </div>
+
+    <div class="current-tab-section" id="current-tab-section" style="display: none;">
+      <h3>Current Tab</h3>
+      <div class="current-tab-info">
+        <div class="tab-domain" id="tab-domain">-</div>
+        <div class="tab-status" id="tab-status">
+          <span class="status-dot"></span>
+          <span class="status-text">Not monitored</span>
+        </div>
+      </div>
+      <button id="add-current-domain" class="btn btn-small">
+        + Add to Blocked List
+      </button>
+    </div>
+
+    <div class="quick-actions">
+      <button id="open-settings" class="btn btn-primary">
+        ⚙️ Open Settings
+      </button>
+    </div>
+
+    <div class="footer">
+      <p>Practice intentional browsing 💜</p>
+    </div>
+  </div>
+
+  <script src="../browser-polyfill.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

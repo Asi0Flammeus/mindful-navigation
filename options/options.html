@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mindful Navigation - Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-content">
+        <div class="logo">
+          <span class="logo-icon">🧘</span>
+          <h1>Mindful Navigation</h1>
+        </div>
+        <p class="tagline">Practice intentional browsing</p>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="card">
+        <div class="card-header">
+          <h2>Blocked Domains</h2>
+          <p class="card-description">
+            Add domains where you want to practice mindful navigation. When you visit these sites,
+            you'll be prompted to reflect on your intention.
+          </p>
+        </div>
+
+        <div class="add-domain-section">
+          <div class="input-group">
+            <input
+              type="text"
+              id="domain-input"
+              class="domain-input"
+              placeholder="example.com"
+              aria-label="Domain to block"
+            />
+            <button id="add-domain-btn" class="btn btn-primary">
+              <span class="btn-icon">+</span>
+              Add Domain
+            </button>
+          </div>
+          <p class="input-hint">
+            Enter domain without "www" or "https://" (e.g., youtube.com, twitter.com)
+          </p>
+        </div>
+
+        <div class="domain-list-section">
+          <h3 class="section-title">Your Blocked Domains</h3>
+          <div id="domain-list" class="domain-list">
+            <div class="empty-state">
+              <span class="empty-icon">🌱</span>
+              <p>No blocked domains yet</p>
+              <p class="empty-hint">Add domains above to start your mindful browsing journey</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <h2>Suggested Domains</h2>
+          <p class="card-description">
+            Common websites where people benefit from mindful browsing
+          </p>
+        </div>
+
+        <div class="suggested-domains">
+          <button class="suggested-domain" data-domain="youtube.com">
+            <span class="suggested-icon">📺</span>
+            <span>youtube.com</span>
+          </button>
+          <button class="suggested-domain" data-domain="twitter.com">
+            <span class="suggested-icon">🐦</span>
+            <span>twitter.com</span>
+          </button>
+          <button class="suggested-domain" data-domain="x.com">
+            <span class="suggested-icon">✕</span>
+            <span>x.com</span>
+          </button>
+          <button class="suggested-domain" data-domain="facebook.com">
+            <span class="suggested-icon">📘</span>
+            <span>facebook.com</span>
+          </button>
+          <button class="suggested-domain" data-domain="instagram.com">
+            <span class="suggested-icon">📷</span>
+            <span>instagram.com</span>
+          </button>
+          <button class="suggested-domain" data-domain="reddit.com">
+            <span class="suggested-icon">🤖</span>
+            <span>reddit.com</span>
+          </button>
+          <button class="suggested-domain" data-domain="tiktok.com">
+            <span class="suggested-icon">🎵</span>
+            <span>tiktok.com</span>
+          </button>
+          <button class="suggested-domain" data-domain="netflix.com">
+            <span class="suggested-icon">🎬</span>
+            <span>netflix.com</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="card info-card">
+        <div class="card-header">
+          <h2>How It Works</h2>
+        </div>
+
+        <div class="info-steps">
+          <div class="info-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h4>Reflection Pause</h4>
+              <p>When you visit a blocked domain, you'll see a 30-second reflection timer asking "Do you really want to visit this website?"</p>
+            </div>
+          </div>
+
+          <div class="info-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h4>Set Intention</h4>
+              <p>If you proceed, you'll be asked to write down your specific intention and choose a time limit (5, 15, 30, or 60 minutes).</p>
+            </div>
+          </div>
+
+          <div class="info-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h4>Mindful Session</h4>
+              <p>Browse with awareness during your allotted time. The extension remembers your intention.</p>
+            </div>
+          </div>
+
+          <div class="info-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h4>Reflection Check</h4>
+              <p>When time expires, you'll reflect on whether you followed your intention and decide if you need more time.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Made with 💜 for mindful browsing</p>
+      <p class="version">Version 1.0.0</p>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="../browser-polyfill.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

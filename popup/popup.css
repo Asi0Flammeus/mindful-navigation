@@ -1,0 +1,223 @@
+/* Mindful Navigation - Popup Zen Cream Styles */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Inter:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  width: 350px;
+  min-height: 400px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #FFF8F0 0%, #F5EBE0 50%, #F0E6D8 100%);
+  color: #3E3831;
+  overflow-x: hidden;
+}
+
+.popup-container {
+  padding: 20px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #3E3831;
+}
+
+.icon {
+  font-size: 44px;
+  display: block;
+  margin-bottom: 10px;
+  opacity: 0.9;
+  filter: grayscale(20%);
+}
+
+.header h1 {
+  font-family: 'Crimson Pro', serif;
+  font-size: 19px;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.01em;
+  color: #3E3831;
+}
+
+/* Stats Section */
+.stats-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.stat-card {
+  background: rgba(255, 253, 250, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 16px 12px;
+  text-align: center;
+  box-shadow:
+    0 2px 12px rgba(139, 103, 76, 0.06),
+    0 1px 4px rgba(139, 103, 76, 0.03);
+  border: 1px solid rgba(218, 186, 155, 0.2);
+}
+
+.stat-number {
+  font-family: 'Crimson Pro', serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #8B674C;
+  margin-bottom: 4px;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #7A6F5D;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Current Tab Section */
+.current-tab-section {
+  background: rgba(255, 253, 250, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
+  box-shadow:
+    0 2px 12px rgba(139, 103, 76, 0.06),
+    0 1px 4px rgba(139, 103, 76, 0.03);
+  border: 1px solid rgba(218, 186, 155, 0.2);
+}
+
+.current-tab-section h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #3E3831;
+  margin-bottom: 10px;
+  letter-spacing: 0.01em;
+}
+
+.current-tab-info {
+  margin-bottom: 12px;
+}
+
+.tab-domain {
+  font-size: 15px;
+  font-weight: 500;
+  color: #3E3831;
+  margin-bottom: 8px;
+  word-break: break-all;
+}
+
+.tab-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #9B8F7E;
+}
+
+.tab-status.monitored .status-dot {
+  background: #7C9473;
+}
+
+.tab-status.session .status-dot {
+  background: #8B674C;
+  animation: gentlePulse 2s infinite;
+}
+
+@keyframes gentlePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.status-text {
+  color: #7A6F5D;
+  font-weight: 400;
+}
+
+/* Buttons */
+.btn {
+  width: 100%;
+  padding: 11px 16px;
+  border: 1.5px solid;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  letter-spacing: 0.01em;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 103, 76, 0.12);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #8B674C 0%, #A67C52 100%);
+  border-color: #8B674C;
+  color: #FFFDFB;
+  box-shadow: 0 2px 6px rgba(139, 103, 76, 0.15);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #7A5A42 0%, #8B674C 100%);
+  border-color: #7A5A42;
+  box-shadow: 0 4px 12px rgba(139, 103, 76, 0.2);
+}
+
+.btn-small {
+  padding: 9px 14px;
+  font-size: 13px;
+  background: linear-gradient(135deg, #8B674C 0%, #A67C52 100%);
+  border-color: #8B674C;
+  color: #FFFDFB;
+}
+
+.btn-small:hover {
+  background: linear-gradient(135deg, #7A5A42 0%, #8B674C 100%);
+  border-color: #7A5A42;
+}
+
+/* Quick Actions */
+.quick-actions {
+  margin-bottom: 14px;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  color: #7A6F5D;
+  font-size: 11px;
+  opacity: 0.85;
+  font-weight: 400;
+}
+
+.footer p {
+  margin: 0;
+}

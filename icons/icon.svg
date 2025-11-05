@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Gradient background -->
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="45" fill="url(#grad)" filter="url(#shadow)"/>
+
+  <!-- Meditation person silhouette -->
+  <g transform="translate(50, 50)">
+    <!-- Head -->
+    <circle cx="0" cy="-15" r="8" fill="white" opacity="0.95"/>
+
+    <!-- Body -->
+    <ellipse cx="0" cy="5" rx="12" ry="15" fill="white" opacity="0.95"/>
+
+    <!-- Arms in meditation pose -->
+    <path d="M -12 0 Q -18 5, -15 12" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.95"/>
+    <path d="M 12 0 Q 18 5, 15 12" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.95"/>
+
+    <!-- Legs crossed -->
+    <path d="M -8 15 Q -12 20, -5 22" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.95"/>
+    <path d="M 8 15 Q 12 20, 5 22" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.95"/>
+  </g>
+
+  <!-- Zen circle (Enso) around person -->
+  <circle cx="50" cy="50" r="35" fill="none" stroke="white" stroke-width="2" opacity="0.3" stroke-dasharray="3,2"/>
+
+  <!-- Small dots for mindfulness -->
+  <circle cx="50" cy="15" r="2" fill="white" opacity="0.6"/>
+  <circle cx="15" cy="50" r="2" fill="white" opacity="0.6"/>
+  <circle cx="85" cy="50" r="2" fill="white" opacity="0.6"/>
+</svg>
