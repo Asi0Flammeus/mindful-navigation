@@ -62,20 +62,12 @@ const MindfulNav = {
     if (isBlocked && !hasSession) {
       console.log(`BLOCKING navigation to ${domain}`);
 
-      // Cancel the request
-      const result = { cancel: true };
-
-      // Redirect to blocking page after canceling
+      // Redirect to blocking page instead of canceling
       const blockingPageUrl = browser.runtime.getURL('popup/blocking.html') +
         `?domain=${encodeURIComponent(domain)}` +
         `&url=${encodeURIComponent(details.url)}`;
 
-      // Use tabs.update to navigate to blocking page
-      browser.tabs.update(details.tabId, { url: blockingPageUrl }).catch(err => {
-        console.error('Failed to redirect to blocking page:', err);
-      });
-
-      return result;
+      return { redirectUrl: blockingPageUrl };
     }
 
     // Allow navigation

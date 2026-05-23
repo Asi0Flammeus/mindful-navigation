@@ -1,40 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <!-- Gradient background -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    <!-- Soft lavender gradient for the enso stroke -->
+    <linearGradient id="ensoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#9B89F0"/>
+      <stop offset="55%" stop-color="#7B68EE"/>
+      <stop offset="100%" stop-color="#5D4FCC"/>
     </linearGradient>
-    <filter id="shadow">
-      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3"/>
-    </filter>
+
+    <!-- Compass needle gradient (north = accent, south = muted) -->
+    <linearGradient id="needleNorth" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%"  stop-color="#7B68EE"/>
+      <stop offset="100%" stop-color="#9B89F0"/>
+    </linearGradient>
+    <linearGradient id="needleSouth" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"  stop-color="#C9C0F2" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#A89EE0" stop-opacity="0.85"/>
+    </linearGradient>
+
+    <!-- Subtle glow under the enso -->
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="#7B68EE" stop-opacity="0.18"/>
+      <stop offset="70%" stop-color="#7B68EE" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#7B68EE" stop-opacity="0"/>
+    </radialGradient>
   </defs>
 
-  <!-- Background circle -->
-  <circle cx="50" cy="50" r="45" fill="url(#grad)" filter="url(#shadow)"/>
+  <!-- Halo -->
+  <circle cx="256" cy="256" r="240" fill="url(#halo)"/>
 
-  <!-- Meditation person silhouette -->
-  <g transform="translate(50, 50)">
-    <!-- Head -->
-    <circle cx="0" cy="-15" r="8" fill="white" opacity="0.95"/>
+  <!-- Enso (zen circle) — open at the top-right, hand-drawn feel -->
+  <path
+    d="M 360 130
+       A 180 180 0 1 1 256 76
+       A 180 180 0 0 1 388 158"
+    fill="none"
+    stroke="url(#ensoGrad)"
+    stroke-width="28"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.95"/>
 
-    <!-- Body -->
-    <ellipse cx="0" cy="5" rx="12" ry="15" fill="white" opacity="0.95"/>
-
-    <!-- Arms in meditation pose -->
-    <path d="M -12 0 Q -18 5, -15 12" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.95"/>
-    <path d="M 12 0 Q 18 5, 15 12" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.95"/>
-
-    <!-- Legs crossed -->
-    <path d="M -8 15 Q -12 20, -5 22" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.95"/>
-    <path d="M 8 15 Q 12 20, 5 22" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.95"/>
+  <!-- Compass needle through the enso -->
+  <g transform="translate(256 256) rotate(-25)">
+    <!-- North half (pointing up-right originally; rotated) -->
+    <polygon points="0,-150 14,0 0,8 -14,0"
+             fill="url(#needleNorth)"/>
+    <!-- South half -->
+    <polygon points="0,150 14,0 0,-8 -14,0"
+             fill="url(#needleSouth)"/>
+    <!-- Center pivot -->
+    <circle cx="0" cy="0" r="10" fill="#FFF8F0"/>
+    <circle cx="0" cy="0" r="6" fill="#5D4FCC"/>
   </g>
-
-  <!-- Zen circle (Enso) around person -->
-  <circle cx="50" cy="50" r="35" fill="none" stroke="white" stroke-width="2" opacity="0.3" stroke-dasharray="3,2"/>
-
-  <!-- Small dots for mindfulness -->
-  <circle cx="50" cy="15" r="2" fill="white" opacity="0.6"/>
-  <circle cx="15" cy="50" r="2" fill="white" opacity="0.6"/>
-  <circle cx="85" cy="50" r="2" fill="white" opacity="0.6"/>
 </svg>

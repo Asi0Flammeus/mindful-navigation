@@ -1,246 +1,110 @@
-# 🌐 Installation Guide for Mindful Navigation
+# Installation guide
 
-## 🎯 For Zen Browser (RECOMMENDED)
+Mindful Navigation is a WebExtension (Manifest V2). Until a signed store
+release is published, it loads as a temporary / unpacked extension. The steps
+differ slightly per browser engine.
 
-**IMPORTANT:** Zen Browser is **Firefox-based** (Gecko engine), NOT Chromium-based!
+> **TL;DR**
+> - Firefox / Zen → `about:debugging` → *Load Temporary Add-on* → pick `manifest.json`
+> - Chrome / Edge / Brave → `chrome://extensions` → enable Developer mode → *Load unpacked* → pick the folder
 
-### Architecture
-- **Engine:** Gecko (Mozilla Firefox)
-- **API:** `browser` WebExtension API
-- **Extensions:** Compatible with Firefox Add-ons
+## 1. Get the source
 
-### Installation Steps
-
-1. **Open Zen Browser Extensions Manager**
-   - Click the **Extensions button** (jigsaw icon) in top bar
-   - OR press `Ctrl+Shift+A`
-   - OR Menu → "Add-ons and themes"
-
-2. **Load Temporary Extension**
-   - Click the **gear icon** (⚙️) in top-right
-   - Select **"Debug Add-ons"**
-   - Click **"Load Temporary Add-on..."**
-   - Navigate to: `/home/asi0/asi0-repos/mindful-navigation/`
-   - Select: `manifest.json`
-   - Click **Open**
-
-3. **Verify Installation**
-   - ✅ Extension appears in extensions list
-   - ✅ Extension icon (🧘) visible in toolbar
-   - ✅ No error messages
-
-4. **Pin to Toolbar (Optional)**
-   - Right-click extension icon
-   - Select "Pin to toolbar"
-
-### Testing in Zen
-
-1. **Open test page:**
-   ```
-   http://localhost:8000/test.html
-   ```
-
-2. **Expected behavior:**
-   - Test 1: ✅ "API Type: Firefox (browser API)"
-   - All tests should pass with `browser` API detected
-
----
-
-## 🦊 For Firefox
-
-**Same steps as Zen Browser** - they use identical extension systems:
-
-1. Navigate to: `about:debugging#/runtime/this-firefox`
-2. Click **"Load Temporary Add-on"**
-3. Select `manifest.json` from extension folder
-4. Extension persists until Firefox closes
-
----
-
-## 🌍 For Chromium-based Browsers
-
-**Note:** Zen is **NOT** in this category. Only use these steps for Chrome, Edge, Brave, etc.
-
-### Step 1: Enable Developer Mode
-
-1. Open browser extensions page:
-   - **Chrome:** `chrome://extensions/`
-   - **Edge:** `edge://extensions/`
-   - **Brave:** `brave://extensions/`
-
-2. Toggle **"Developer mode"** ON (top-right)
-
-### Step 2: Load Extension
-
-1. Click **"Load unpacked"**
-2. Select the `mindful-navigation` folder
-3. Extension should appear in list
-
----
-
-## 🔧 Browser Compatibility
-
-| Browser | Engine | API | Supported |
-|---------|--------|-----|-----------|
-| **Zen Browser** | Gecko | `browser` | ✅ Yes |
-| **Firefox** | Gecko | `browser` | ✅ Yes |
-| Chrome | Blink | `chrome` | ✅ Yes |
-| Edge | Blink | `chrome` | ✅ Yes |
-| Brave | Blink | `chrome` | ✅ Yes |
-| Safari | WebKit | - | ❌ No |
-
----
-
-## 🧪 Testing Your Installation
-
-### Quick Test (All Browsers)
-
-1. **Start local test server** (if not running):
-   ```bash
-   cd /home/asi0/asi0-repos/mindful-navigation
-   python3 -m http.server 8000
-   ```
-
-2. **Open test page** in your browser:
-   ```
-   http://localhost:8000/test.html
-   ```
-
-3. **Run Test 1: Extension Detection**
-   - Click "Run Test" button
-   - Should show: ✅ PASSED with your browser's API type
-
-4. **Run Tests 2-5**
-   - Test storage, messaging, and domain management
-   - All should pass ✅
-
-### Full Manual Test
-
-1. **Open extension settings:**
-   - Click extension icon → "Open Settings"
-
-2. **Add test domain:**
-   - Enter: `example.com`
-   - Click "Add Domain"
-
-3. **Test the overlay:**
-   - Visit: `http://example.com`
-   - Should see: 30-second mindfulness timer
-   - Answer questions to start session
-
----
-
-## 🐛 Troubleshooting
-
-### Extension Won't Load in Zen/Firefox
-
-**Check Console:**
-1. Open Browser Console: `Ctrl+Shift+J`
-2. Look for errors starting with "Mindful Navigation"
-3. Check for manifest errors
-
-**Common Issues:**
-- ❌ Selected wrong file (must be `manifest.json`)
-- ❌ Folder permissions issue
-- ❌ Manifest syntax error
-
-**Solution:**
 ```bash
-# Verify manifest is valid JSON
-cat manifest.json | python3 -m json.tool
+git clone https://github.com/Asi0Flammeus/mindful-navigation.git
+cd mindful-navigation
 ```
 
-### Test Page Shows "No API Available"
+No build step is required.
 
-**Cause:** Extension not loaded in browser
+## 2. Load the extension
 
-**Solution:**
-1. Verify extension is installed (check extensions page)
-2. Make sure you're viewing test.html in the SAME browser where extension is loaded
-3. For Zen/Firefox: Open as `http://localhost:8000/test.html` (NOT `file://`)
+### Firefox
 
-### Extension Loads but Doesn't Work
+1. Open `about:debugging#/runtime/this-firefox`.
+2. Click **Load Temporary Add-on…**.
+3. Select the `manifest.json` file in the repo root.
 
-**Debug Steps:**
+The extension stays loaded until you close Firefox.
 
-1. **Check Background Script:**
-   - Zen: Extensions page → Inspect background
-   - Look for initialization errors
+### Zen Browser
 
-2. **Check Content Script:**
-   - Visit any webpage
-   - Press F12 → Console tab
-   - Look for content script errors
+Zen is Firefox-based (Gecko engine, same WebExtension API), so the steps are
+identical to Firefox:
 
-3. **Clear Storage and Reload:**
-   ```javascript
-   // In browser console:
-   browser.storage.local.clear()
-   // Then reload extension
-   ```
+1. Press `Ctrl+Shift+A` to open the Add-ons Manager.
+2. Click the gear icon (⚙) → **Debug Add-ons**.
+3. Click **Load Temporary Add-on…** and select `manifest.json`.
 
----
+### Chrome / Edge / Brave / Opera / Arc
 
-## 🔄 Updating the Extension
+1. Open the extensions page:
+   - Chrome: `chrome://extensions/`
+   - Edge: `edge://extensions/`
+   - Brave: `brave://extensions/`
+2. Toggle **Developer mode** on (top-right).
+3. Click **Load unpacked** and select the `mindful-navigation` folder.
 
-### During Development
+Unpacked extensions persist between browser restarts. You'll see a yellow
+"Developer mode extensions" warning — that's normal for unsigned local builds.
 
-**Zen/Firefox:**
-1. Go to extensions page (`Ctrl+Shift+A`)
-2. Click **Reload** next to extension
-3. Changes apply immediately
+## 3. Verify the install
 
-**Chromium:**
-1. Go to extensions page
-2. Click **Reload** icon on extension card
-3. Changes apply immediately
+You should see:
 
----
+- The extension listed in the extensions page with no error badge.
+- The Mindful Navigation icon in the toolbar (pin it if your browser hides
+  extension icons by default).
 
-## 📝 Important Notes
+Click the icon → **Open Settings** → add a test domain such as `example.com` →
+visit `http://example.com`. You should see the reflection overlay with a
+30-second countdown.
 
-### Temporary Extensions (Zen/Firefox)
+## Updating during development
 
-- **Removed when browser closes**
-- Must reload each development session
-- For permanent install: Package and sign for AMO (addons.mozilla.org)
+After editing source files:
 
-### Unpacked Extensions (Chromium)
+- **Firefox / Zen** — `about:debugging` → click **Reload** next to the
+  extension entry.
+- **Chrome family** — `chrome://extensions` → click the circular **Reload**
+  icon on the extension card.
 
-- **Persist between sessions**
-- Yellow warning badge (normal for dev extensions)
-- For production: Publish to Chrome Web Store
+Then refresh the test page.
 
-### Zen Browser Limitations
+## Troubleshooting
 
-- ❌ Firefox themes NOT supported (Zen uses custom theming)
-- ✅ All Firefox extensions work
-- ✅ Full WebExtension API support
-- ✅ Same security model as Firefox
+**Extension won't load (manifest error).**
+Validate the manifest:
+```bash
+python3 -m json.tool < manifest.json > /dev/null && echo OK
+```
+If that prints `OK`, re-check that you pointed the loader at `manifest.json`,
+not at the parent folder (Firefox) or vice versa (Chrome wants the folder).
 
----
+**Overlay never appears on a blocked domain.**
+- Confirm the domain is in the configured list (extension Settings).
+- Use the base domain (`reddit.com`, not `old.reddit.com/r/...`); subdomains
+  match the parent.
+- Open the browser console (`F12` → Console) and look for errors prefixed with
+  `Mindful Navigation`.
 
-## 🚀 Quick Start After Installation
+**Buttons never activate after the countdown.**
+- Make sure JavaScript is enabled for extension pages.
+- Reload the extension from the extensions page.
 
-1. ✅ Click extension icon
-2. ✅ Click "Open Settings"
-3. ✅ Add your distracting domains (reddit.com, twitter.com, etc.)
-4. ✅ Visit those sites to experience mindful browsing!
+**Session doesn't end / domain stays unblocked.**
+Clear extension storage and reload:
+```js
+// Run in the extension background console
+browser.storage.local.clear(); // or chrome.storage.local.clear()
+```
 
----
+**Chrome reports "Manifest version 2 is deprecated".**
+Acknowledged — MV2 still works in current Chrome stable, and a MV3 migration
+is on the roadmap. Firefox / Zen continue to support MV2 long-term.
 
-## 🆘 Still Having Issues?
+## Permanent install (not yet available)
 
-1. Check `TROUBLESHOOTING.md` for detailed debugging
-2. Run all tests in `test.html` and note which fail
-3. Check browser console for specific error messages
-4. Open issue on GitHub with:
-   - Browser name and version (e.g., "Zen Browser 1.14.11b")
-   - Console error messages
-   - Which tests pass/fail
-
----
-
-**Zen Browser:** Firefox-based (Gecko engine) | Uses `browser` API | Full Firefox extension compatibility
-
-**Happy Mindful Browsing! 🧘**
+A signed AMO build (Firefox) and a Chrome Web Store listing are planned for an
+upcoming release. Until then, the unpacked / temporary install above is the
+supported path.

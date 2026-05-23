@@ -4,6 +4,13 @@
   "version": "1.0.0",
   "description": "Practice intentional browsing with mindful questions and timers",
 
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "mindful-nav-v2@yourdomain.com",
+      "strict_min_version": "58.0"
+    }
+  },
+
   "permissions": [
     "storage",
     "tabs",
@@ -15,14 +22,13 @@
   ],
 
   "background": {
-    "scripts": ["browser-polyfill.js", "background.js"],
-    "persistent": true
+    "scripts": ["browser-polyfill.js", "background.js"]
   },
 
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["browser-polyfill.js", "content.js"],
+      "js": ["content.js"],
       "css": ["styles/overlay.css"],
       "run_at": "document_start",
       "all_frames": false
@@ -49,6 +55,7 @@
 
   "web_accessible_resources": [
     "styles/overlay.css",
-    "browser-polyfill.js"
+    "popup/blocking.html",
+    "popup/blocking.js"
   ]
 }

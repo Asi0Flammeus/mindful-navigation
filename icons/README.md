@@ -1,59 +1,24 @@
-# Icon Generation
+# Icons
 
-The extension requires PNG icons in the following sizes:
-- 48x48 pixels (`icon-48.png`)
-- 96x96 pixels (`icon-96.png`)
+The extension ships three icon assets:
 
-## Quick Generation Options
+- `icon.svg` — source vector (zen circle / enso with a compass needle, lavender accent)
+- `icon-48.png` — toolbar / extension list (48×48)
+- `icon-96.png` — high-DPI toolbar and store listings (96×96)
+- `icon-512.png` — store/listing hero asset (512×512)
 
-### Option 1: Using ImageMagick (Recommended)
+## Regenerating from the SVG
+
 ```bash
-# Install ImageMagick if needed
-# Ubuntu/Debian: sudo apt-get install imagemagick
-# macOS: brew install imagemagick
-
-# Generate icons
-convert -background none icon.svg -resize 48x48 icon-48.png
-convert -background none icon.svg -resize 96x96 icon-96.png
+rsvg-convert -w 512 -h 512 icon.svg -o icon-512.png
+rsvg-convert -w 96  -h 96  icon.svg -o icon-96.png
+rsvg-convert -w 48  -h 48  icon.svg -o icon-48.png
 ```
 
-### Option 2: Using Inkscape
-```bash
-# Install Inkscape if needed
-# Ubuntu/Debian: sudo apt-get install inkscape
-# macOS: brew install inkscape
+`rsvg-convert` renders SVG gradients correctly; ImageMagick's legacy SVG renderer does not.
 
-# Generate icons
-inkscape icon.svg --export-filename=icon-48.png --export-width=48 --export-height=48
-inkscape icon.svg --export-filename=icon-96.png --export-width=96 --export-height=96
-```
+## Design
 
-### Option 3: Using Node.js (sharp)
-```bash
-npm install sharp-cli -g
-sharp -i icon.svg -o icon-48.png resize 48 48
-sharp -i icon.svg -o icon-96.png resize 96 96
-```
-
-### Option 4: Online Tools
-- Visit https://cloudconvert.com/svg-to-png
-- Upload `icon.svg`
-- Set dimensions to 48x48 and 96x96
-- Download the converted PNG files
-
-### Option 5: Temporary Placeholder
-For testing purposes, you can use simple emoji-based icons:
-```bash
-# This script creates basic placeholder icons
-node generate-placeholder-icons.js
-```
-
-## Icon Design
-
-The icon features:
-- 🧘 Meditation figure in white
-- Purple gradient background (#667eea to #764ba2)
-- Zen circle (Enso) pattern
-- Minimalist, calm aesthetic
-
-The design reflects the extension's purpose: mindful, intentional browsing.
+Single stylized enso (open zen circle) with a compass needle passing through it,
+on a transparent background, soft lavender gradient (`#7B68EE` family).
+The needle nods to *intentional navigation*; the enso to *presence and pause*.
